@@ -1,17 +1,18 @@
 # arch26
 
---> https://itsfoss.com/install-arch-linux/
---> https://wiki.archlinux.de/title/2._Installation_des_Grundsystems
---> https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot
---> https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
---> https://itsfoss.com/things-to-do-after-installing-arch-linux/
---> https://github.com/bpteodor/notes/blob/main/install-ARCH.md
---> https://wiki.archlinux.org/title/Dm-crypt/System_configuration
---> https://github.com/silentz/arch-linux-install-guide
+	--> https://itsfoss.com/install-arch-linux/
+	--> https://wiki.archlinux.de/title/2._Installation_des_Grundsystems
+	--> https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot
+	--> https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
+	--> https://itsfoss.com/things-to-do-after-installing-arch-linux/
+	--> https://github.com/bpteodor/notes/blob/main/install-ARCH.md
+	--> https://wiki.archlinux.org/title/Dm-crypt/System_configuration
+	--> https://github.com/silentz/arch-linux-install-guide
 
 --nach boot von stick:
-loadkeys de-latin1
-(ls /sys/firmware/efi/efivars) CHECK
+
+	loadkeys de-latin1
+	(ls /sys/firmware/efi/efivars) CHECK
 
 d) EFI, crypted-LVM
 
@@ -108,7 +109,6 @@ b) EFI, crypted-LVM
 		timeout 4
     bootctl update - Systemd-boot updaten
 
-Weiter siehe Kapitel: Chrootumgebung verlassen und neustarten
 Chrootumgebung verlassen und neustarten
 
     exit
@@ -123,7 +123,6 @@ ISO-Stick entfernen, Neustarten und auf der Konsole Einloggen
 Weiter siehe Kapitel: 5. Grafische Benutzeroberflaeche 
 
 Für die Installation der grafischen Benutzeroberfläche und des Audiosystems wird hier jeweils nur eine minimalistische Paketauswahl mit einem Terminal vorgestellt. Die weitere Ausgestaltung sollte individuell erfolgen.
-Audio
 
 Für alle GUIs gleich:
 
@@ -156,38 +155,41 @@ GNOME
     systemctl enable gdm - Login-Manager aktivieren	
 	
 Erstes Update:
-	  sudo nano /etc/pacman.conf 
-	  [multilib]
-	  - comment in Include...
-	  sudo pacman -Syu
+	
+	sudo nano /etc/pacman.conf 
+	"[multilib]"
+	comment in Include...
+	sudo pacman -Syu
 
 Installation:
-	  sudo pacman -S dbus zip unzip p7zip htop tree dialog reflector inxi base-devel firefox thunderbird libreoffice vlc veracrypt git gcc flatpak fakeroot debugedit  chromium discord telegram-desktop signal-desktop keepass
-	  reboot
-	  [...]
-	  clone https://aur.archlinux.org/snapd.git 
-	  cd snapd/
-	  makepkg -si
-	  sudo ln -s /var/lib/snapd/snap /snap
-	  sudo systemctl enable snapd.socket --now
-	  sudo snap install proton-mail
-	  ---> wiki.archlinux.de/title/Steam 
-	  $ flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	  $ flatpak --user install flathub com.valvesoftware.Steam
-	  $ flatpak run com.valvesoftware.Steam
-	  (KANN DAUERN!)
+	
+	sudo pacman -S dbus zip unzip p7zip htop tree dialog reflector inxi base-devel firefox thunderbird libreoffice vlc veracrypt git gcc flatpak fakeroot debugedit  chromium discord telegram-desktop signal-desktop keepass
+	reboot	
+	"[...]"	
+	clone https://aur.archlinux.org/snapd.git 
+	cd snapd/
+	makepkg -si
+	sudo ln -s /var/lib/snapd/snap /snap
+	sudo systemctl enable snapd.socket --now
+	sudo snap install proton-mail	
+	---> wiki.archlinux.de/title/Steam 
+	$ flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	$ flatpak --user install flathub com.valvesoftware.Steam
+	$ flatpak run com.valvesoftware.Steam
+	(KANN DAUERN!)
 
-	  flatpak update
-	  flatpak uninstall --unused
-	  snap refresh
-
-	  pacman -S mesa vulkan-amd lib32-mesa lib32-vulkan-amd vulkan-tools mesa-utils
-	  (you might need to enable DRI3 in Xorg settings)
-	  reboot
+	flatpak update
+	flatpak uninstall --unused
+	snap refresh
+	
+	pacman -S mesa vulkan-amd lib32-mesa lib32-vulkan-amd vulkan-tools mesa-utils
+	(you might need to enable DRI3 in Xorg settings)
+	reboot
 
 ########
 
 [chris@linuxpc ~]$ pacman -Qe
+
 		7zip 26.00-1
 		acpid 2.0.34-2
 		alsa-plugins 1:1.2.12-5
@@ -310,6 +312,7 @@ Installation:
 		zip 3.0-11
 
 [chris@linuxpc ~]$ snap list
+
 		bare
 		core22
 		core24
@@ -326,6 +329,7 @@ Installation:
 		warzone2100-videos
 
 [chris@linuxpc ~]$ flatpak list
+
 		Name                               Anwendungskennung
 		Steam                              com.valvesoftware.Steam
 		Path of Building                   community.pathofbuilding.PathOfBuilding
@@ -341,10 +345,12 @@ Installation:
 		Adwaita dark GTK theme             org.gtk.Gtk3theme.Adwaita-dark
 
 Blizzard Games:
+
 	Download and add „Battle.net-Setup.exe“ as „Non-Steam-Game“ to your library…
 
 Tastatur → Tastaturbelegung → deutsch
 Tastatur → Tastenkürzel für Anwendungen:
+
 	amixer -D pulse sset Master 5%+ → vol up
 	amixer -D pulse sset Master 5%- → vol down 
 	amixer -D pulse set Master toggle → mute
@@ -354,4 +360,5 @@ Tastatur → Tastenkürzel für Anwendungen:
 	xfce4-popup-whiskermenu → Super (doesn’t work)
 
 Login Screen:
+
 	Hintergund → festlegen
